@@ -20,10 +20,22 @@ const [isValid, logs] = validateFields(fieldsValidate, req.body);
 // logs: return Array
 ```
 
-### Add "!" For Required Value
+### Add "!" In Front Of Field Key For Required Value
 
 ```javascript
 const fieldsValidate = ["!username", "!password", "email"];
+const [isValid, logs] = validateFields(fieldsValidate, req.body);
+
+// isValid: return Boolean
+// logs: return Array
+```
+
+### Add ":[TYPES]" After Field Key For Validate Type
+
+#### Types : number, string, boolean, object, undefined
+
+```javascript
+const fieldsValidate = ["!username:string", "password:string", "age:number"];
 const [isValid, logs] = validateFields(fieldsValidate, req.body);
 
 // isValid: return Boolean
@@ -38,7 +50,7 @@ Thanks you :).
 
 ### Buy me a coffee
 
-<img src="https://user-images.githubusercontent.com/79690698/217761482-40e56be0-40b6-44c6-a346-7cf09c88bfd5.png" width="200" height="200" />
+<img src="https://user-images.githubusercontent.com/79690698/217761482-40e56be0-40b6-44c6-a346-7cf09c88bfd5.png" width="200" height="230" />
 
 ###
 
