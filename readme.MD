@@ -1,17 +1,17 @@
-# Validate Body Fields
+# Validate-Fields-Body
 
-Validate-Body-Fields is a Javascript library for dealing with validation.
+Validate-Fields-Body is a Javascript library for dealing with validation.
 
 ## Installation
 
 ```bash
-npm i validate-body-fields
+npm i validate-fields-body
 ```
 
 ## Usage
 
 ```javascript
-const validateFields = require("validate-body-fields");
+const validateFields = require("validate-fields-body");
 
 const fieldsValidate = ["username", "email", "password"];
 const [isValid, logs] = validateFields(fieldsValidate, req.body);
@@ -23,6 +23,9 @@ const [isValid, logs] = validateFields(fieldsValidate, req.body);
 ## Contributing
 
 Thanks you :).
+
+###
+
 Author by: Nero Sengtianthr.
 
 ## License
