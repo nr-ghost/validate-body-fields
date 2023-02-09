@@ -34,6 +34,12 @@ const [isValid, logs] = validateFields(fieldsValidate, req.body);
 
 Thanks you :).
 
+## Donation
+
+### Buy me a coffee
+
+<img src="https://user-images.githubusercontent.com/79690698/217761482-40e56be0-40b6-44c6-a346-7cf09c88bfd5.png" width="200" height="200" />
+
 ###
 
 Author by: Nero Sengtianthr.
