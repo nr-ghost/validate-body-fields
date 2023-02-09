@@ -1,6 +1,6 @@
 {
   "name": "validate-fields-body",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Validate-Fields-Body is a Javascript library for dealing with validation.",
   "main": "index.js",
   "scripts": {

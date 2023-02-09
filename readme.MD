@@ -20,6 +20,16 @@ const [isValid, logs] = validateFields(fieldsValidate, req.body);
 // logs: return Array
 ```
 
+### Add "!" For Required Value
+
+```javascript
+const fieldsValidate = ["!username", "!password", "email"];
+const [isValid, logs] = validateFields(fieldsValidate, req.body);
+
+// isValid: return Boolean
+// logs: return Array
+```
+
 ## Contributing
 
 Thanks you :).
