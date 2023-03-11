@@ -8,39 +8,49 @@ Validate-Fields-Body is a Javascript library for dealing with validation.
 npm i validate-fields-body
 ```
 
-## Usage
+## Validate Fields Body
+
+### Example
 
 ```javascript
-const validateFields = require("validate-fields-body");
+const { useValidate } = require("validate-fields-body");
 
-const fieldsValidate = ["username", "email", "password"];
-const [isValid, logs] = validateFields(fieldsValidate, req.body);
+const register = (req, res) => {
+  // Set your fields to validate
+  const fieldsValidate = ["username", "email", "password", "age", "skills"];
 
-// isValid: return Boolean
-// logs: return Array
+  const [isValid, logs, result] = useValidate(fieldsValidate, req.body);
+
+  if (isValid) return res.status(403).json({ success: false, message: logs });
+
+  return res.status(201).send({ success: true, data: result });
+};
 ```
 
-### Add "!" In Front Of Field Key For Required Value
+### Require Value
 
 ```javascript
-const fieldsValidate = ["!username", "!password", "email"];
-const [isValid, logs] = validateFields(fieldsValidate, req.body);
-
-// isValid: return Boolean
-// logs: return Array
+const fieldsValidate = ["!username", "!email", "!password", "!age", "skills"];
 ```
 
-### Add ":[TYPES]" After Field Key For Validate Type
-
-#### Types : number, string, boolean, object, undefined
+### Check Types
 
 ```javascript
-const fieldsValidate = ["!username:string", "password:string", "age:number"];
-const [isValid, logs] = validateFields(fieldsValidate, req.body);
-
-// isValid: return Boolean
-// logs: return Array
+const fieldsValidate = [
+  "!username:string",
+  "!email:string",
+  "!password:string",
+  "!age:number",
+  "skills:object",
+];
 ```
+
+## Options
+
+| Option  | Keyword        |
+| ------- | -------------- |
+| !       | Required Value |
+| :[TYPE] | Check Type     |
 
 ## Contributing
 

@@ -1,11 +1,15 @@
-function validateFields(validateFields, formData) {
-  const formKeys = Object.keys(formData);
-  let logs = [];
-  for (let i = 0; i < validateFields.length; i++) {
-    let validateField = validateFields[i];
-    const requiredField = validateFields[i].includes("!");
-    const requiredType = validateFields[i].includes(":");
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.useValidate = void 0;
 
+function useValidate(validateKeys, formData) {
+  const formKeys = Object.keys(formData);
+  let result = {};
+  let logs = [];
+  for (let i = 0; i < validateKeys.length; i++) {
+    let validateField = validateKeys[i];
+    const requiredField = validateKeys[i].includes("!");
+    const requiredType = validateKeys[i].includes(":");
     // Validate Types
     if (requiredType) {
       const key = validateField.split(":")[0].replace(/[^a-zA-Z0-9 ]/g, "");
@@ -14,9 +18,8 @@ function validateFields(validateFields, formData) {
       if (type !== typeof form_type) {
         logs.push(`Required Type: [${type}] ${key}`);
       }
-      validateField = validateFields[i].split(":")[0];
+      validateField = validateKeys[i].split(":")[0];
     }
-
     // Validate Require
     if (requiredField) {
       let key = validateField.split("!")[1];
@@ -25,13 +28,14 @@ function validateFields(validateFields, formData) {
       }
       validateField = key;
     }
-
     // Validate Matching Key Field
     if (!formKeys.includes(validateField)) {
       logs.push(`Required Field: ${validateField}`);
+    } else {
+      result[validateField] = formData[validateField];
     }
   }
-  return logs.length > 0 ? [true, logs] : [false, null];
+  return logs.length > 0 ? [true, logs, null] : [false, null, result];
 }
-
-module.exports = { validateFields };
+exports.useValidate = useValidate;
+//# sourceMappingURL=index.js.map
